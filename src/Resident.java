@@ -1,15 +1,15 @@
 public class Resident {
-    private static String name;
-    private static int age;
-    private static String address;
-    private static String contact;
+    private String name;
+    private String age;
+    private String address;
+    private String contact;
 
     public Resident(){
 
 
     }
 
-    public Resident(String name, int age, String address, String contact) {
+    public Resident(String name, String age, String address, String contact) {
         this.name = name;
         this.age = age;
         this.address = address;
@@ -24,11 +24,11 @@ public class Resident {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

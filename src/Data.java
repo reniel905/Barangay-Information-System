@@ -31,11 +31,44 @@ public class Data extends Barangay {
     }
 
     @Override
-    public String display() {
+    public String displayResident() {
+
+        System.out.println("List of barangay residents:");
 
         for (Resident i: residentList) {
 
             //display list of residents
+            System.out.println(
+                    "=======================================" +
+                            "\n" + "Name: " + i.getName() +
+                            "\n" + "Age: " + i.getAge() +
+                            "\n" + "Address: " + i.getAddress() +
+                            "\n" + "Contact: " + i.getContact() +
+                            "\n"
+            );
+
+        }
+
+        return null;
+    }
+
+    @Override
+    public String displayOfficial() {
+
+        System.out.println("List of barangay officials:");
+
+        for (Official j: officialList) {
+
+            System.out.println(
+                    "=======================================" +
+                            "\n" + "Name: " + j.getName() +
+                            "\n" + "Age: " + j.getAge() +
+                            "\n" + "Position: " + j.getPosition() +
+                            "\n" + "Address: " + j.getAddress() +
+                            "\n" + "Contact: " + j.getContact() +
+                            "\n"
+            );
+
         }
 
         return null;

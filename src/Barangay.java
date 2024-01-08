@@ -8,9 +8,8 @@ public abstract class Barangay {
     public abstract void remove(Official official);
     public abstract void add(Resident resident);
     public abstract void remove(Resident resident);
-    public abstract String display();
-    //public abstract Resident displayResident();
-    //public abstract Official displayOfficial();
+    public abstract String displayResident();
+    public abstract String displayOfficial();
     public void register(){
 
 

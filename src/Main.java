@@ -1,34 +1,23 @@
-import java.util.Scanner;
 
-public class Main extends Resident {
+public class Main {
+
     public static void main(String[] args){
 
-        // TODO: Ask the user if he/she is a Barangay Resident or Barangay Official
-
-        Scanner input = new Scanner(System.in);
         Data data = new Data();
-        Resident resident = new Resident();
 
-        System.out.println("Register yourself as a resident of your Barangay!");
+        data.add(new Resident("Reniel G. Baldove", "20", "41 Kalayaan St.", "09099146061"));
+        data.add(new Resident("Elmer G. Felisilda Jr.", "19", "41 Zone 5 St.", "324321654sda321"));
+        data.add(new Resident("Elias Chan", "21", "55 Zone 12 St.", "35461321320320"));
 
-        System.out.print("Please enter your name: ");
-        resident.setName(input.nextLine());
-        System.out.print("Please enter your age: ");
-        resident.setAge(input.nextInt());
-        System.out.print("Please enter your address: ");
-        resident.setAddress(input.nextLine());
-        System.out.print("Please enter your contact number: ");
-        resident.setContact(input.nextLine());
+        new Menu();
 
-        Data.residentList.add(new Resident(resident.getName(), resident.getAge(), resident.getAddress(), resident.getContact()));
-
-        for (Resident i: Data.residentList) {
-
-            System.out.println(i.getName() + " " + i.getAge());
-            
-        }
-
-
+        //TODO
+        // Menu
+        // 1. View Residents List
+        // 2. View Officials List
+        // 3. Register as Resident
+        // 4. Register as an Official
+        // ask if resident or not, if not register as resident
 
     }
 }

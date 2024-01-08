@@ -2,7 +2,11 @@ public class Official extends Resident{
 
     private String position;
 
-    public Official(String name, int age, String address, String contact, String position) {
+    public Official() {
+
+    }
+
+    public Official(String name, String age, String address, String contact, String position) {
         super(name, age, address, contact);
         this.position = position;
     }
