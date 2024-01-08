@@ -1,6 +1,9 @@
 public class Official extends Resident{
     // Brgy. Official information also inherits the information of the Resident object (e.g., Name, Address, etc.)
     private String position;
+    public Official(){
+        
+    }
 
     // Constructor for the Brgy. Official object
     public Official(String name, int age, String address, String contact, String position) {
