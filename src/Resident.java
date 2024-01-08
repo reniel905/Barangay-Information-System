@@ -1,9 +1,9 @@
 public class Resident {
     // Static variables for Resident object information
-    private static String name;
-    private static int age;
-    private static String address;
-    private static String contact;
+    private String name;
+    private int age;
+    private String address;
+    private String contact;
 
     public Resident(){
 
