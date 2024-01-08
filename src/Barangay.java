@@ -17,4 +17,4 @@ public abstract class Barangay {
 
     };
 
-}
+} 
