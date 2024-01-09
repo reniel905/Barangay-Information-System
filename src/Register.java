@@ -52,13 +52,14 @@ public class Register extends Resident {
 
             System.out.println("Register yourself as an official of your Barangay!");
             System.out.print("Please enter your name: ");
-            official.setName(input.nextLine());
+            official.setName(input.next());
             System.out.print("Please enter your age: ");
-            official.setAge(input.nextLine());
+            official.setAge(input.next());
             System.out.print("Please enter your address: ");
-            official.setAddress(input.nextLine());
+            official.setAddress(input.next());
             System.out.print("Please enter your contact number: ");
-            official.setContact(input.nextLine());
+            official.setContact(input.next());
+
 
             Data.officialList.add(new Official(official.getName(), official.getAge(), official.getAddress(), official.getContact(), official.getPosition()));
             System.out.println("You are now successfully registered as an official of this Barangay.");
