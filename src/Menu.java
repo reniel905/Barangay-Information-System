@@ -8,16 +8,16 @@ public class Menu {
 
     public Menu() {
         int option = Integer.parseInt(System.console().readLine("\n" +
-                        "0. Exit" + "\n" +
-                        "1. View Residents List" + "\n" +
-                        "2. View Officials List" + "\n" +
-                        "3. Register as Resident" + "\n" +
-                        "4. Register as Official" + "\n"));
+                "0. Exit" + "\n" +
+                "1. View Residents List" + "\n" +
+                "2. View Officials List" + "\n" +
+                "3. Register as Resident" + "\n" +
+                "4. Register as Official" + "\n"));
 
-        switch (option){
+        switch (option) {
 
             case 0:
-                // exit
+                System.exit(0);
                 break;
             case 1:
                 data.displayResident();
@@ -33,9 +33,6 @@ public class Menu {
             case 4:
                 register.asOfficial();
                 break;
-
-
-
 
         }
 
