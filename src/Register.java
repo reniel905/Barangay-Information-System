@@ -20,14 +20,10 @@ public class Register extends Resident {
     public void asResident(){
 
         System.out.println("Register yourself as a resident of your Barangay!");
-        System.out.print("Please enter your name: ");
-        resident.setName(input.next());
-        System.out.print("Please enter your age: ");
-        resident.setAge(input.next());
-        System.out.print("Please enter your address: ");
-        resident.setAddress(input.next());
-        System.out.print("Please enter your contact number: ");
-        resident.setContact(input.next());
+        resident.setName(System.console().readLine("Please enter your name: "));
+        resident.setAge(System.console().readLine("Please enter your age: "));
+        resident.setAddress(System.console().readLine("Please enter your address: "));
+        resident.setContact(System.console().readLine("Please enter your contact number: "));
 
         Data.residentList.add(new Resident(resident.getName(), resident.getAge(), resident.getAddress(), resident.getContact()));
         System.out.println("You are now successfully registered as resident of this Barangay.");
@@ -38,10 +34,7 @@ public class Register extends Resident {
     }
 
     public void asOfficial(){
-
-        System.out.println("Are you already a resident? [Y/N]");
-
-        String answer = input.next();
+        String answer = System.console().readLine("Are you already a resident? [Y/N]: ");
 
         if (answer.equalsIgnoreCase("n")){
 
@@ -51,14 +44,11 @@ public class Register extends Resident {
         } else if (answer.equalsIgnoreCase("y")) {
 
             System.out.println("Register yourself as an official of your Barangay!");
-            System.out.print("Please enter your name: ");
-            official.setName(input.next());
-            System.out.print("Please enter your age: ");
-            official.setAge(input.next());
-            System.out.print("Please enter your address: ");
-            official.setAddress(input.next());
-            System.out.print("Please enter your contact number: ");
-            official.setContact(input.next());
+            official.setName(System.console().readLine("Please enter your name: "));
+            official.setAge(System.console().readLine("Please enter your age: "));
+            official.setAddress(System.console().readLine("Please enter your address: "));
+            official.setContact(System.console().readLine("Please enter your contact number: "));
+            official.setPosition(System.console().readLine("Please enter your barangay position: "));
 
 
             Data.officialList.add(new Official(official.getName(), official.getAge(), official.getAddress(), official.getContact(), official.getPosition()));

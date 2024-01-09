@@ -7,16 +7,12 @@ public class Menu {
     Register register = new Register();
 
     public Menu() {
-
-        System.out.println("\n" +
+        int option = Integer.parseInt(System.console().readLine("\n" +
                         "0. Exit" + "\n" +
                         "1. View Residents List" + "\n" +
                         "2. View Officials List" + "\n" +
                         "3. Register as Resident" + "\n" +
-                        "4. Register as Official" + "\n"
-                );
-
-        int option = input.nextInt();
+                        "4. Register as Official" + "\n"));
 
         switch (option){
 
