@@ -1,10 +1,10 @@
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Data extends Barangay {
 
-    public static HashSet<Resident> residentList = new HashSet<>();
-    public static HashSet<Official> officialList = new HashSet<>();
+    public static ArrayList<Resident> residentList = new ArrayList<Resident>();
+    public static ArrayList<Official> officialList = new ArrayList<Official>();
     // Scanner input = new Scanner(System.in);
 
     @Override
@@ -18,18 +18,39 @@ public class Data extends Barangay {
     }
 
     @Override
-    public void remove(int position) {
+    public void remove(int position, boolean isOfficial) {
 
-        Iterator<Resident> i = residentList.iterator();
-        while (i.hasNext()) {
+        if (isOfficial) {
 
-            Resident resident1 = i.next();
+            Iterator<Official> i = officialList.iterator();
+            while (i.hasNext()) {
 
-            if (residentList.toArray()[position - 1] == resident1) {
+                Official official1 = i.next();
 
-                i.remove();
+                if (officialList.toArray()[position - 1] == official1) {
 
-                break;
+                    i.remove();
+
+                    break;
+
+                }
+
+            }
+
+        } else {
+
+            Iterator<Resident> i = residentList.iterator();
+            while (i.hasNext()) {
+
+                Resident resident1 = i.next();
+
+                if (residentList.toArray()[position - 1] == resident1) {
+
+                    i.remove();
+
+                    break;
+
+                }
 
             }
 
@@ -41,47 +62,53 @@ public class Data extends Barangay {
 
     @Override
     public String displayResident() {
-        System.out.println("List of barangay residents:");
-
+        System.out
+                .println(
+                        "====================================================================================================================");
+        System.out
+                .println(
+                        "=                                              RESIDENTS LIST                                                      =");
+        System.out
+                .println(
+                        "====================================================================================================================");
+        System.out.printf("| %-4s | %-60s | %-4s | %-20s | %-12s | \n", "No.", "Name", "Age", "Address", "Contact no.");
+        System.out
+                .println(
+                        "--------------------------------------------------------------------------------------------------------------------");
         int count = 0;
 
         for (Resident i : residentList) {
 
             count += 1;
 
-            // display list of residents
-            System.out.println(
-                    "=======================================" +
-                            "\n" + count + "." +
-                            "\n" + "Name: " + i.getName() +
-                            "\n" + "Age: " + i.getAge() +
-                            "\n" + "Address: " + i.getAddress() +
-                            "\n" + "Contact: " + i.getContact() +
-                            "\n");
-
-            System.out.println("Enter [" + count + "] to edit this data." + "\n");
+            System.out.printf("| %-4s | %-60s | %-4s | %-20s | %-12s | \n", count, i.getName(), i.getAge(),
+                    i.getAddress(),
+                    i.getContact());
 
         }
-        int edit = Integer.parseInt(System.console().readLine("Enter [0] to go back to menu. \n"));
+
+        System.out.println(
+                "--------------------------------------------------------------------------------------------------------------------");
+        int edit = Integer.parseInt(System.console()
+                .readLine("\nEnter [0] to go back to menu \nEnter [any number from the table] to edit \n"));
 
         if (edit > 0 && edit < residentList.size() + 1) {
-            int option = Integer.parseInt(System.console().readLine("Choose what to do with the data" + "\n" +
-                    "1. Remove" + "\n" +
-                    "2. Edit" + "\n"));
+            int option = Integer.parseInt(System.console().readLine(
+                    "\nEnter [1] to remove data" + "\n" +
+                            "Enter [2] to edit data" + "\n"));
 
             if (option == 1) {
 
                 // remove the data from the hashset
-                remove(edit);
+                remove(edit, false);
 
             } else if (option == 2) {
                 // edit data
                 int editOption = Integer.parseInt(System.console()
-                        .readLine("Choose what do you want to change." + "\n" +
-                                "1. Name" + "\n" +
-                                "2. Age" + "\n" +
-                                "3. Address" + "\n" +
-                                "4. Contact" + "\n"));
+                        .readLine("\nEnter [1] to edit name" + "\n" +
+                                "Enter [2] to edit age" + "\n" +
+                                "Enter [3] to edit address" + "\n" +
+                                "Enter [4] to edit contact" + "\n"));
 
                 // Moved here para di iba iba yung variable sa switch-case chuchu check mo kung
                 // nagana - Elmer
@@ -95,12 +122,8 @@ public class Data extends Barangay {
                             Resident resident1 = i.next();
 
                             if (residentList.toArray()[edit - 1] == resident1) {
-                                String newName = System.console().readLine("Enter new name: ");
+                                String newName = System.console().readLine("\nEnter new name: ");
                                 resident1.setName(new String(newName));
-                                Resident updatedResName = new Resident(resident1.getName(), resident1.getAge(),
-                                        resident1.getAddress(), resident1.getContact());
-                                i.remove();
-                                residentList.add(updatedResName);
                                 break;
 
                             }
@@ -114,12 +137,8 @@ public class Data extends Barangay {
                             Resident resident1 = i.next();
 
                             if (residentList.toArray()[edit - 1] == resident1) {
-                                String newAge = System.console().readLine("Enter new age: ");
+                                String newAge = System.console().readLine("\n Enter new age: ");
                                 resident1.setAge(new String(newAge));
-                                Resident updatedResAge = new Resident(resident1.getName(), resident1.getAge(),
-                                        resident1.getAddress(), resident1.getContact());
-                                i.remove();
-                                residentList.add(updatedResAge);
                                 break;
 
                             }
@@ -132,13 +151,8 @@ public class Data extends Barangay {
                             Resident resident1 = i.next();
 
                             if (residentList.toArray()[edit - 1] == resident1) {
-                                String newAddress = System.console().readLine("Enter new address: ");
+                                String newAddress = System.console().readLine("\n Enter new address: ");
                                 resident1.setAddress(new String(newAddress));
-                                // input.next();
-                                Resident updatedResAddress = new Resident(resident1.getName(), resident1.getAge(),
-                                        resident1.getAddress(), resident1.getContact());
-                                i.remove();
-                                residentList.add(updatedResAddress);
                                 break;
                             }
 
@@ -151,12 +165,8 @@ public class Data extends Barangay {
 
                             if (residentList.toArray()[edit - 1] == resident1) {
 
-                                String newContact = System.console().readLine("Enter new contact: ");
+                                String newContact = System.console().readLine("\n Enter new contact: ");
                                 resident1.setContact(new String(newContact));
-                                Resident updatedResContact = new Resident(resident1.getName(), resident1.getAge(),
-                                        resident1.getAddress(), resident1.getContact());
-                                i.remove();
-                                residentList.add(updatedResContact);
                                 break;
 
                             }
@@ -166,6 +176,8 @@ public class Data extends Barangay {
 
                 }
                 System.out.println("Changes have been saved.");
+                displayResident();
+
             }
 
         } else {
@@ -180,43 +192,56 @@ public class Data extends Barangay {
     @Override
     public String displayOfficial() {
 
-        System.out.println("List of barangay officials:");
+        System.out
+                .println(
+                        "=======================================================================================================================");
+        System.out
+                .println(
+                        "=                                                OFFICIALS LIST                                                       =");
+        System.out
+                .println(
+                        "=======================================================================================================================");
+        System.out.printf("| %-4s | %-40s | %-20s | %-4s | %-20s | %-12s | \n", "No.", "Name", "Position", "Age",
+                "Address",
+                "Contact no.");
+        System.out
+                .println(
+                        "-----------------------------------------------------------------------------------------------------------------------");
 
         int count = 0;
 
         for (Official j : officialList) {
             count += 1;
-            System.out.println(
-                    "=======================================" +
-                            "\n" + "Name: " + j.getName() +
-                            "\n" + "Age: " + j.getAge() +
-                            "\n" + "Address: " + j.getAddress() +
-                            "\n" + "Contact: " + j.getContact() +
-                            "\n" + "Position: " + j.getPosition() + "\n");
-            System.out.println("Enter [" + count + "] to edit this data." + "\n");
+            System.out.printf("| %-4s | %-40s | %-20s | %-4s | %-20s | %-12s | \n", count, j.getName(), j.getPosition(),
+                    j.getAge(),
+                    j.getAddress(),
+                    j.getContact());
         }
 
-        int edit = Integer.parseInt(System.console().readLine("Enter [0] to go back to menu. \n"));
+        System.out
+                .println(
+                        "-----------------------------------------------------------------------------------------------------------------------");
+
+        int edit = Integer.parseInt(System.console()
+                .readLine("\nEnter [0] to go back to menu \nEnter [any number from the table] to edit \n"));
 
         if (edit > 0 && edit < officialList.size() + 1) {
-            int option = Integer.parseInt(System.console().readLine("Choose what to do with the data" + "\n" +
-                    "1. Remove" + "\n" +
-                    "2. Edit" + "\n"));
+            int option = Integer.parseInt(System.console().readLine("\nEnter [1] to remove data" + "\n" +
+                    "Enter [2] to edit data" + "\n"));
 
             if (option == 1) {
 
                 // remove the data from the hashset
-                remove(edit);
+                remove(edit, true);
 
             } else if (option == 2) {
                 // edit data
                 int editOption = Integer.parseInt(System.console()
-                        .readLine("Choose what do you want to change." + "\n" +
-                                "1. Name" + "\n" +
-                                "2. Age" + "\n" +
-                                "3. Address" + "\n" +
-                                "4. Contact" + "\n" +
-                                "5. Position" + "\n"));
+                        .readLine("\nEnter [1] to edit name" + "\n" +
+                                "Enter [2] to edit age" + "\n" +
+                                "Enter [3] to edit address" + "\n" +
+                                "Enter [4] to edit contact" + "\n" +
+                                "Enter [5] to edit position" + "\n"));
 
                 // Moved here para di iba iba yung variable sa switch-case chuchu check mo kung
                 // nagana - Elmer
@@ -230,12 +255,8 @@ public class Data extends Barangay {
                             Official official1 = i.next();
 
                             if (officialList.toArray()[edit - 1] == official1) {
-                                String newName = System.console().readLine("Enter new name: ");
+                                String newName = System.console().readLine("\nEnter new name: ");
                                 official1.setName(new String(newName));
-                                Official updatedOfcName = new Official(official1.getName(), official1.getAge(),
-                                        official1.getAddress(), official1.getContact(), official1.getPosition());
-                                i.remove();
-                                officialList.add(updatedOfcName);
                                 break;
                             }
                         }
@@ -246,12 +267,8 @@ public class Data extends Barangay {
                             Official official1 = i.next();
 
                             if (officialList.toArray()[edit - 1] == official1) {
-                                String newAge = System.console().readLine("Enter new age: ");
+                                String newAge = System.console().readLine("\nEnter new age: ");
                                 official1.setAge(new String(newAge));
-                                Official updatedOfcAge = new Official(official1.getName(), official1.getAge(),
-                                        official1.getAddress(), official1.getContact(), official1.getPosition());
-                                i.remove();
-                                officialList.add(updatedOfcAge);
                                 break;
                             }
                         }
@@ -262,12 +279,8 @@ public class Data extends Barangay {
                             Official official1 = i.next();
 
                             if (officialList.toArray()[edit - 1] == official1) {
-                                String newAddress = System.console().readLine("Enter new address: ");
+                                String newAddress = System.console().readLine("\nEnter new address: ");
                                 official1.setAddress(new String(newAddress));
-                                Official updatedOfcAddress = new Official(official1.getName(), official1.getAge(),
-                                        official1.getAddress(), official1.getContact(), official1.getPosition());
-                                i.remove();
-                                officialList.add(updatedOfcAddress);
                                 break;
                             }
                         }
@@ -278,12 +291,8 @@ public class Data extends Barangay {
                             Official official1 = i.next();
 
                             if (officialList.toArray()[edit - 1] == official1) {
-                                String newContact = System.console().readLine("Enter new contact number: ");
+                                String newContact = System.console().readLine("\nEnter new contact number: ");
                                 official1.setContact(new String(newContact));
-                                Official updatedOfcContact = new Official(official1.getName(), official1.getAge(),
-                                        official1.getAddress(), official1.getContact(), official1.getPosition());
-                                i.remove();
-                                officialList.add(updatedOfcContact);
                                 break;
                             }
                         }
@@ -294,18 +303,15 @@ public class Data extends Barangay {
                             Official official1 = i.next();
 
                             if (officialList.toArray()[edit - 1] == official1) {
-                                String newPosition = System.console().readLine("Enter new barangay position: ");
+                                String newPosition = System.console().readLine("\nEnter new barangay position: ");
                                 official1.setPosition(new String(newPosition));
-                                Official updatedOfcPosition = new Official(official1.getName(), official1.getAge(),
-                                        official1.getAddress(), official1.getContact(), official1.getPosition());
-                                i.remove();
-                                officialList.add(updatedOfcPosition);
                                 break;
                             }
                         }
                         break;
                 }
-                System.out.println("Changes have been saved.");
+                System.out.println("\nChanges have been saved!");
+                displayOfficial();
             }
 
         } else {

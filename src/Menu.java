@@ -8,11 +8,11 @@ public class Menu {
 
     public Menu() {
         int option = Integer.parseInt(System.console().readLine("\n" +
-                "0. Exit" + "\n" +
-                "1. View Residents List" + "\n" +
-                "2. View Officials List" + "\n" +
-                "3. Register as Resident" + "\n" +
-                "4. Register as Official" + "\n"));
+                "Enter [0] to exit" + "\n" +
+                "Enter [1] to view Residents List" + "\n" +
+                "Enter [2] to view Officials List" + "\n" +
+                "Enter [3] to register as Resident" + "\n" +
+                "Enter [4] to register as Official" + "\n"));
 
         switch (option) {
 

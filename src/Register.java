@@ -12,12 +12,11 @@ public class Register extends Resident {
 
     int type;
 
-    public Register(){
-
+    public Register() {
 
     }
 
-    public void asResident(){
+    public void asResident() {
 
         System.out.println("Register yourself as a resident of your Barangay!");
         resident.setName(System.console().readLine("Please enter your name: "));
@@ -25,18 +24,18 @@ public class Register extends Resident {
         resident.setAddress(System.console().readLine("Please enter your address: "));
         resident.setContact(System.console().readLine("Please enter your contact number: "));
 
-        Data.residentList.add(new Resident(resident.getName(), resident.getAge(), resident.getAddress(), resident.getContact()));
+        Data.residentList
+                .add(new Resident(resident.getName(), resident.getAge(), resident.getAddress(), resident.getContact()));
         System.out.println("You are now successfully registered as resident of this Barangay.");
 
-
-        new Menu();
+        data.displayResident();
 
     }
 
-    public void asOfficial(){
+    public void asOfficial() {
         String answer = System.console().readLine("Are you already a resident? [Y/N]: ");
 
-        if (answer.equalsIgnoreCase("n")){
+        if (answer.equalsIgnoreCase("n")) {
 
             System.out.println("You need to be a resident first. ");
             new Menu();
@@ -50,11 +49,11 @@ public class Register extends Resident {
             official.setContact(System.console().readLine("Please enter your contact number: "));
             official.setPosition(System.console().readLine("Please enter your barangay position: "));
 
-
-            Data.officialList.add(new Official(official.getName(), official.getAge(), official.getAddress(), official.getContact(), official.getPosition()));
+            Data.officialList.add(new Official(official.getName(), official.getAge(), official.getAddress(),
+                    official.getContact(), official.getPosition()));
             System.out.println("You are now successfully registered as an official of this Barangay.");
 
-            new Menu();
+            data.displayOfficial();
 
         }
 
